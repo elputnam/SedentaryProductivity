@@ -47,9 +47,11 @@ function draw() {
   //background(220);
   //intro noise
   if (frameCount < 150){
-    noStroke();
-    fill(random(175,360), random(100), random(100));
+    // noStroke();
+    noFill()
+    stroke(random(175,360), random(100), random(100));
     for (let l = 0; l < 500; l++){
+      // for (let j = 0; j < 10; j++)
       circle(random(width), random(height), random(100));
     }
   }
@@ -101,7 +103,7 @@ function activityMapping(){
 }
 
 function camGrrrl(){
-  if (frameCount%30==0){
+  if (frameCount%15==0){
     filter(INVERT);
     image(capture, x, y, width*.25, height*.25);
     x += width*.25;

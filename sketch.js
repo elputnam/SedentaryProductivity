@@ -63,13 +63,13 @@ function draw() {
     steps = stepCount[step_num]['value'];
     day_num += 1;
     step_num += 1;
-    let notActiveColor = map(sedentary, 0, 1200, 175, 360);
+    let notActiveColor = map(sedentary, 0, 1200, 175, 0);
     
     camGrrrl();
     activityMapping();
     //change background color
     background(notActiveColor, 100, 100, 1);
-    
+
     print(steps);
     //cycle
     if (day_num >= num_days){

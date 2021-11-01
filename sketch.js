@@ -14,6 +14,7 @@ let day_num = 0;
 let num_steps; //number of step intervals
 let step_num = 0;
 let sedentary, steps;
+let notActiveColor;
 
 function preload(){
   //Load list of json file names
@@ -63,7 +64,7 @@ function draw() {
     steps = stepCount[step_num]['value'];
     day_num += 1;
     step_num += 1;
-    let notActiveColor = map(sedentary, 0, 1200, 175, 0);
+    notActiveColor = map(sedentary, 0, 1200, 100, 250);
     
     camGrrrl();
     activityMapping();
@@ -100,7 +101,7 @@ function activityMapping(){
 }
 
 function camGrrrl(){
-  if (frameCount%15==0){
+  if (frameCount%30==0){
     filter(INVERT);
     image(capture, x, y, width*.25, height*.25);
     x += width*.25;

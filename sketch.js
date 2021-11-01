@@ -46,7 +46,7 @@ function setup() {
 function draw() {
   //background(220);
   //intro noise
-  if (frameCount < 150){
+  if (frameCount < 100){
     // noStroke();
     noFill()
     strokeWeight(random(5));
@@ -62,7 +62,7 @@ function draw() {
     num_steps = Object.keys(stepCount).length;
   }
 
-  if (frameCount > 150){
+  if (frameCount > 100){
     sedentary = notActive[day_num]['value'];
     steps = stepCount[step_num]['value'];
     day_num += 1;

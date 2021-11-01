@@ -49,6 +49,7 @@ function draw() {
   if (frameCount < 150){
     // noStroke();
     noFill()
+    strokeWeight(random(5));
     stroke(random(175,360), random(100), random(100));
     for (let l = 0; l < 500; l++){
       // for (let j = 0; j < 10; j++)

@@ -72,7 +72,7 @@ function draw() {
     camGrrrl();
     activityMapping();
     //change background color
-    background(notActiveColor, 100, 100, 1);
+    background(notActiveColor, 100, 50, 1);
 
     print(steps);
     //cycle
@@ -89,13 +89,16 @@ function draw() {
 function activityMapping(){
   // stepdust
   push();
+  rectMode(CENTER);
   translate(width*.75, height*.4);
   let num1 = 200;
   let cir = (360 / num1) * (frameCount % num1);
   rotate((radians(cir)));
+  let stepColor = map(steps, 0, 100, 360, 250);
   let inside = map(steps, 0, 100, 100, 0)
   noStroke();
-  fill(inside);
+  // strokeWeight(1);
+  fill(stepColor, 100, inside);
   let stretch = map(steps, 0, 100, width, 200)
   for (let i = 0; i < steps; i++){
     rect(0 + random(-stretch), 0 + random(stretch/2), random(inside), random(inside));
@@ -104,8 +107,8 @@ function activityMapping(){
 }
 
 function camGrrrl(){
-  if (frameCount%15==0){
-    filter(INVERT);
+  if (frameCount%10==0){
+    // filter(INVERT);
     image(capture, x, y, width*.25, height*.25);
     x += width*.25;
     if (x >= width){

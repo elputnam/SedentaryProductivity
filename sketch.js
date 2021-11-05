@@ -110,6 +110,7 @@ function activityMapping(){
 function camGrrrl(){
   if (frameCount%10==0){
     // filter(INVERT);
+    tint(0, 0, 0);
     image(capture, x, y, width*.25, height*.25);
     x += width*.25;
     if (x >= width){

@@ -68,7 +68,7 @@ function draw() {
     day_num += 1;
     step_num += 1;
     notActiveColor = map(sedentary, 0, 1200, 0, 360);
-    
+    // filter(INVERT);
     camGrrrl();
     activityMapping();
     //change background color
@@ -98,8 +98,8 @@ function activityMapping(){
   let inside = map(steps, 0, 100, 100, 0)
   noStroke();
   // strokeWeight(1);
-  fill(inside);
-  // fill(stepColor, 100, inside);
+  // fill(inside);
+  fill(stepColor, 100, inside);
   let stretch = map(steps, 0, 100, width, 200)
   for (let i = 0; i < steps; i++){
     rect(0 + random(-stretch), 0 + random(stretch/2), random(inside), random(inside));
@@ -109,7 +109,7 @@ function activityMapping(){
 
 function camGrrrl(){
   if (frameCount%10==0){
-    // filter(INVERT);
+    filter(INVERT);
     image(capture, x, y, width*.25, height*.25);
     x += width*.25;
     if (x >= width){

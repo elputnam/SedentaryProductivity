@@ -30,7 +30,7 @@ function preload(){
 }
 
 function setup() {
-  if (capture && frameCount==1) capturer.start(); // start the animation capture
+  // if (frameCount==1) capturer.start(); // start the animation capture
   createCanvas(400, 400);
   createCanvas(windowWidth, windowHeight);
   colorMode(HSB, 360, 100, 100, 100);
@@ -58,6 +58,9 @@ function setup() {
 }
 
 function draw() {
+  if (frameCount == 1){
+    capturer.start();
+  }
   //background(220);
   //intro noise
   if (frameCount < 100){
@@ -99,7 +102,8 @@ function draw() {
     }
   }
 
-  capturer.capture(document.getElementById('defaultCanvas0'));  
+  // capturer.capture(document.getElementById('defaultCanvas0'));  
+  capturer.capture( canvas );
 }
 
 function activityMapping(){

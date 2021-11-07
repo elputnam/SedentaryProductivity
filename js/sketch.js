@@ -16,6 +16,13 @@ let step_num = 0;
 let sedentary, steps;
 let notActiveColor;
 
+//Ccapture
+var capturer = new CCapture({
+  format:'webm', 
+  framerate: 15
+});
+var btn1;
+
 function preload(){
   //Load list of json file names
   sedentaryList = loadStrings('sedentary-dataList.txt');
@@ -23,6 +30,7 @@ function preload(){
 }
 
 function setup() {
+  if (capture && frameCount==1) capturer.start(); // start the animation capture
   createCanvas(400, 400);
   createCanvas(windowWidth, windowHeight);
   colorMode(HSB, 360, 100, 100, 100);
@@ -41,6 +49,12 @@ function setup() {
   print(month);
   notActive = loadJSON(sedentaryList[month]);
   stepCount = loadJSON(stepList[month]); 
+
+  //CCapture
+  btn1 = document.createElement('button');
+  btn1.textContent = "save recording"; 
+  document.body.appendChild(btn1);
+  btn1.onclick = save_record;
 }
 
 function draw() {
@@ -84,6 +98,8 @@ function draw() {
       step_num = 0;
     }
   }
+
+  capturer.capture(document.getElementById('defaultCanvas0'));  
 }
 
 function activityMapping(){
@@ -119,7 +135,7 @@ function camGrrrl(){
     
     if (frameCount%60==0){
       // filter(INVERT);
-      filter(THRESHOLD, 0.4);
+      filter(THRESHOLD, 0.2);
       // filter(POSTERIZE, 15);
     }
 
@@ -127,4 +143,9 @@ function camGrrrl(){
       y = 0;
     }
    }
+}
+
+function save_record() {
+  capturer.save();
+  // recorder.stop();
 }

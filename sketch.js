@@ -72,7 +72,7 @@ function draw() {
     camGrrrl();
     activityMapping();
     //change background color
-    background(notActiveColor, 100, 50, 1);
+    background(0, 100, 50, 1);
 
     print(steps);
     //cycle
@@ -99,7 +99,8 @@ function activityMapping(){
   noStroke();
   // strokeWeight(1);
   // fill(inside);
-  fill(stepColor, 100, 100);
+  // fill(stepColor, 100, 100);
+  fill(notActiveColor, 100, 70);
   let stretch = map(steps, 0, 100, width, 200)
   for (let i = 0; i < steps; i++){
     rect(0 + random(-stretch), 0 + random(stretch/2), random(inside), random(inside));

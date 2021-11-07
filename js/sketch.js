@@ -30,9 +30,8 @@ function preload(){
 }
 
 function setup() {
-  // if (frameCount==1) capturer.start(); // start the animation capture
-  createCanvas(400, 400);
   createCanvas(windowWidth, windowHeight);
+  // createCanvas(1920, 1080);
   colorMode(HSB, 360, 100, 100, 100);
   background(0);
   x  = 0;
@@ -89,7 +88,8 @@ function draw() {
     camGrrrl();
     activityMapping();
     //change background color
-    background(notActiveColor, 100, 50, 1);
+    // background(notActiveColor, 100, 50, 1);
+    background(0, 100, 50, 1);
 
     print(steps);
     //cycle
@@ -114,12 +114,12 @@ function activityMapping(){
   let num1 = 200;
   let cir = (360 / num1) * (frameCount % num1);
   rotate((radians(cir)));
-  let stepColor = map(steps, 0, 100, 360, 250);
+  // let stepColor = map(steps, 0, 100, 360, 250);
   let inside = map(steps, 0, 100, 100, 0)
   noStroke();
   // strokeWeight(1);
   // fill(inside);
-  fill(stepColor, 100, 100);
+  fill(notActiveColor, 100, 100);
   let stretch = map(steps, 0, 100, width, 200)
   for (let i = 0; i < steps; i++){
     rect(0 + random(-stretch), 0 + random(stretch/2), random(inside), random(inside));
